@@ -9,7 +9,7 @@ import personnages.Ronin;
 public class HistoireTP4 {
     public static void main(String[] args) {
         
-        // Сценарій 1: Тестуємо звичайну людину
+        // Сценарій 1:Тестуємо звичайну людину
         Humain prof = new Humain("Prof", "kombucha", 54);
         prof.direBonjour();
         prof.acheter("boisson", 12);
@@ -19,7 +19,7 @@ public class HistoireTP4 {
 
         System.out.println("-------------------------");
 
-        // Сценарій 2: Торговець і Ронін
+        // Сценарій 2:Торговець і Ронін
         Commercant marco = new Commercant("Marco", 20);
         marco.direBonjour();
         marco.seFaireExtorquer();
@@ -35,14 +35,14 @@ public class HistoireTP4 {
 
         System.out.println("-------------------------");
 
-        // Сценарій 4: Дуель Роніна і Якудзи
+        // Сценарій4: Дуель Роніна і Якудзи
         Ronin roro = new Ronin("Roro", "shochu", 60);
         roro.direBonjour();
         roro.donner(marco);
         
         System.out.println("-------------------------");
         
-        // Бій!
+        // Бій
         roro.provoquer(yaku);
     }
 }

@@ -4,6 +4,8 @@ public class Humain {
 	private String nom;
     private String boissonFavorite;
     private int argent;
+    protected int nbConnaissance=0;
+    protected Humain[] memoire = new Humain[3];
 
     public Humain(String nom, String boissonFavorite, int argent) {
         this.nom = nom;
@@ -21,7 +23,7 @@ public class Humain {
 
     // protected дозволяє класам-нащадкам (Торговцям, Якудзам) використовувати цей метод
     protected void parler(String texte) {
-        System.out.println("(" + nom + ") - " + texte);
+        System.out.println("(" + nom+ ") - " + texte);
     }
 
     public void direBonjour() {
@@ -41,6 +43,7 @@ public class Humain {
         }
     }
 
+    // protected дозволяє класам-нащадкам (Торговцям, Якудзам) використовувати цей метод
     protected void gagnerArgent(int gain) {
         argent += gain;
     }
@@ -48,4 +51,43 @@ public class Humain {
     protected void perdreArgent(int perte) {
         argent -= perte;
     }
+    
+    
+    // nouvel TP5<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    public void faireConnaissanceAvec(Humain autreHumain) {
+    	direBonjour();
+    	autreHumain.repondre(this);
+    	memoriser(autreHumain);
+    	
+    	
+    }
+    protected void memoriser(Humain humain) {
+        if (nbConnaissance < memoire.length) {
+            memoire[nbConnaissance] = humain;
+            nbConnaissance++;
+        } 
+        else {
+            for (int i = 0; i < memoire.length - 1; i++) {
+                memoire[i] = memoire[i+1];
+            }
+            memoire[memoire.length - 1] = humain;
+        }
+    }
+    private void repondre(Humain humain) {
+    	direBonjour();
+    	memoriser(humain);
+    	
+    }
+    public void listerConnaissance() {
+    	
+    	String con = ""; 
+    	for (int i=0;i<nbConnaissance;i++) {
+    		con += memoire[i].getNom()+",";
+    	}
+    	
+    	parler("Je connais beaucoup de monde dont :"+con);
+    	
+    }
+    
+    
 }
